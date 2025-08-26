@@ -5,13 +5,13 @@ const Dashboard = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [products, setProducts] = useState([]);
-
+  const api = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:3000/products",
+        `${api}/products`,
         { name, price },
         {
           headers: {
@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   const fetchProducts = async () => {
     const token = localStorage.getItem("token");
-    const res = await axios.get("http://localhost:3000/products", {
+    const res = await axios.get(`${api}/products`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

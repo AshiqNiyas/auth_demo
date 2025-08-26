@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const api = import.meta.env.VITE_API_URL;
+
 const Login = () => {
   const navigate = useNavigate();
   const handleUsername = (e) => {
@@ -15,7 +17,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:3000/users/login", {
+    const res = await axios.post(`${api}/users/login`, {
       username,
       password,
     });
