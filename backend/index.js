@@ -6,7 +6,7 @@ import productRouter from "./routes/productRoutes.js";
 import cors from "cors";
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "https://auth-demo-amber.vercel.app" }));
 app.use(express.json());
 app.use("/users", userRouter);
 app.use("/products", productRouter);
